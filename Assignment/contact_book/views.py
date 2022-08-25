@@ -13,15 +13,13 @@ class ContactViewSet(viewsets.ModelViewSet):
     authentication_classes = [BasicAuthentication]
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [SearchFilter]
-    search_fields = ['first_name','last_name','email']
-
+    search_fields = ["first_name", "last_name", "email"]
 
     def get_queryset(self):
-        return  Contact.objects.filter(user = self.request.user)
+        return Contact.objects.filter(user=self.request.user)
 
     def perform_create(self, serializer):
-        serializer.save(user= self.request.user)
-
+        serializer.save(user=self.request.user)
 
 
 # class ContactList(ListCreateAPIView):
@@ -30,13 +28,12 @@ class ContactViewSet(viewsets.ModelViewSet):
 #     permission_classes = [permissions.IsAuthenticated]
 #     filter_backends = [SearchFilter]
 #     search_fields = ['first_name','last_name','email']
-     
+
 #     def perform_create(self, serializer):
 #         serializer.save(user= self.request.user)
 
 #     def get_queryset(self):
 #         return  Contact.objects.filter(user = self.request.user)
-
 
 
 # class ContactDetailView(RetrieveUpdateDestroyAPIView):
@@ -49,8 +46,3 @@ class ContactViewSet(viewsets.ModelViewSet):
 
 #     def get_queryset(self):
 #         return  Contact.objects.filter(user = self.request.user)
-
-
-
-
-
